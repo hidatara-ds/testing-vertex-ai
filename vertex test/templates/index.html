@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Vertex AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        #chatbox {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            height: 400px;
+            overflow-y: scroll;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+        }
+        .error {
+            color: #d9534f;
+            font-weight: bold;
+        }
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+        #message {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3367d6;
+        }
+    </style>
+    <script>
+        async function sendMessage() {
+            const userMessage = document.getElementById('message').value;
+            if (!userMessage.trim()) return;
+            
+            const chatBox = document.getElementById('chatbox');
+            chatBox.innerHTML += `<p><b>You:</b> ${userMessage}</p>`;
+            chatBox.innerHTML += `<p><b>Bot:</b> <i>Thinking...</i></p>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+            
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: userMessage })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Server responded with status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Replace the "Thinking..." message with the actual response
+                chatBox.innerHTML = chatBox.innerHTML.replace('<p><b>Bot:</b> <i>Thinking...</i></p>', 
+                    `<p><b>Bot:</b> ${data.response}</p>`);
+            } catch (error) {
+                console.error('Error:', error);
+                // Replace the "Thinking..." message with the error
+                chatBox.innerHTML = chatBox.innerHTML.replace('<p><b>Bot:</b> <i>Thinking...</i></p>', 
+                    `<p class="error"><b>Error:</b> ${error.message}</p>`);
+            }
+            
+            document.getElementById('message').value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+        
+        // Add event listener for Enter key
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('message').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Vertex AI Chatbot</h1>
+    <div id="chatbox"></div>
+    <input type="text" id="message" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+</body>
+</html>
