@@ -1,72 +1,82 @@
+---
+
 # 💬 Gemini Chatbot with Vertex AI
 
-Template awal untuk mencoba AI Chat menggunakan **Gemini** model dari Google melalui **Vertex AI API**.
+A starter template for experimenting with **Gemini**, Google's large language model, via the **Vertex AI API**.
 
-> 🛡️ Repo ini telah disanitasi dan aman untuk dibagikan ke publik.
-
----
-
-## 🚀 Fitur
-
-- Integrasi API Gemini dengan Python
-- Komunikasi AI Chat sederhana (text-based)
-- Siap digunakan sebagai dasar project lebih lanjut
-- Struktur clean dan mudah dikembangkan
+> 🛡️ This repository has been sanitized and is safe to share publicly.
 
 ---
 
-## 🔧 Setup
+## 🚀 Features
 
-### 1. Clone repo
+* API integration with Gemini using Python
+* Simple text-based AI chat interaction
+* Ready-to-use base for further development
+* Clean structure, easy to customize and expand
+
+---
+
+## 🔧 Setup Instructions
+
+### 1. Clone the repository
+
 ```bash
 git clone https://github.com/hidatara-ds/testing-vertex-ai.git
 cd testing-vertex-ai
 ```
 
 ### 2. Install dependencies
-Pastikan Python 3.9+ sudah terpasang. Kemudian jalankan:
+
+Make sure Python 3.9+ is installed. Then run:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Tambahkan credentials.json
-File credentials.json diperlukan untuk mengakses Vertex AI:
+### 3. Add `credentials.json`
 
-Buat service account dari Google Cloud Console
+This file is required to access Vertex AI:
 
-Aktifkan Vertex AI API dan beri perizinan yang sesuai
+* Create a service account from Google Cloud Console
+* Enable the Vertex AI API and assign the necessary permissions
+* Download the key in JSON format
+* Save the file as `credentials.json` in the root directory of this project
 
-Unduh key-nya dalam format JSON
+### 4. Run the project
 
-Simpan file tersebut sebagai credentials.json di root folder repo ini
-
-### 4. Jalankan project
 ```bash
 python main.py
 ```
 
-🧠 Teknologi yang digunakan
-Vertex AI
+---
 
-Gemini API
+## 🧠 Technologies Used
 
-Python 3.9+
-
-📌 Catatan
-Project ini adalah percobaan awal (testing) dari sistem AI Chat berbasis Gemini
-
-Cocok untuk developer yang ingin cepat mencoba kemampuan Vertex AI Chat
-
-Bisa dikembangkan untuk fitur tambahan seperti context memory, Web UI, webhook, dsb.
-
-✨ Credits
-Dibuat oleh @hidatara-ds
-Untuk eksperimen kerja AI & GCP ✨
-
-```yaml
+* Vertex AI
+* Gemini API
+* Python 3.9+
 
 ---
 
-Kalau kamu sudah siap publish, jangan lupa tambahkan `requirements.txt` dan file contoh
+## 📌 Notes
+
+This is an experimental project to test the Gemini-based AI chat system on Vertex AI.
+Perfect for developers who want a quick way to try out Gemini’s chat capabilities.
+It can be extended with additional features like context memory, web UI, webhook integrations, and more.
+
+---
+
+## ✨ Credits
+
+Created by [@hidatara-ds](https://github.com/hidatara-ds)
+For AI & GCP prototyping ✨
+
+---
+
+```yaml
+# Reminder:
+# When you're ready to publish, don't forget to include:
+# - requirements.txt
+# - example files or configs
 ```
