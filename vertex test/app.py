@@ -5,7 +5,7 @@ import google.generativeai as genai
 app = Flask(__name__)
 
 # Set project ID manually
-project_id = "our-service-454404-j3"
+project_id = "your project id in GCP"
 
 # Set up authentication using default credentials
 credentials, _ = google.auth.default(
